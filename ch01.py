@@ -4,6 +4,34 @@
 # A set of containers connected by symmetric links form what is known in computer
 # science as an undirected graph.
 
+class Container:
+    def __init__(self):
+        self.group = null
+        self.connections = []
+    def get_amount(self):
+        return self.group.water_per_container()
+    def connect_to(self, container):
+        container.reverse_connect(self)
+        self.connections.append(container)
+        self.group.add_container(container)
+    def reverse_connect(self, container):
+        self.connections.append(container)
+    def add_water(self, amount):
+        self.group.add_water(amount)
+
+class ContainerGroup:
+    def __init__(self):
+        self.containers = []
+        total_water = 0
+    def add_container(self, container):
+        if not self.containers.includes(container):
+            containers.append_all(container.group)
+            self.add_water(container.group.total_water)
+    def add_water(self, amount):
+        total_water += amount
+    def water_per_container(self):
+        return (self.total_water / self.containers.size())
+
 
 # public double getAmount()—Return the amount of water currently held in
 # this container
